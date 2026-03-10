@@ -1,0 +1,121 @@
+name: RTX Water Valve
+
+products:
+  - id: rtx_water_valve
+    manufacturer: Tuya
+
+entities:
+
+  - entity: switch
+    name: Valve
+    icon: mdi:valve
+    dps:
+      - id: 1
+        type: boolean
+
+  - entity: sensor
+    name: Water Flow
+    class: measurement
+    device_class: volume_flow_rate
+    unit: L/h
+    icon: mdi:waves
+    dps:
+      - id: 5
+        type: integer
+
+  - entity: sensor
+    name: Water Usage
+    class: measurement
+    device_class: water
+    unit: L
+    icon: mdi:water
+    dps:
+      - id: 6
+        type: integer
+
+  - entity: sensor
+    name: Watering Runtime
+    class: measurement
+    unit: min
+    icon: mdi:timer-outline
+    dps:
+      - id: 102
+        type: integer
+
+  - entity: number
+    name: Minimum Flow Alarm
+    icon: mdi:alert
+    dps:
+      - id: 108
+        type: integer
+        range:
+          min: 0
+          max: 5000
+
+  - entity: number
+    name: Maximum Flow Alarm
+    icon: mdi:alert-outline
+    dps:
+      - id: 109
+        type: integer
+        range:
+          min: 0
+          max: 5000
+
+  - entity: select
+    name: Flow Unit
+    icon: mdi:scale
+    dps:
+      - id: 116
+        type: string
+        mapping:
+          "1": gal/min
+          "2": m3/h
+          "3": l/h
+
+  - entity: sensor
+    name: Valve State
+    icon: mdi:valve
+    dps:
+      - id: 121
+        type: integer
+        mapping:
+          0: closed
+          1: transition
+          2: open
+
+  - entity: switch
+    name: Flow Alarm Enabled
+    icon: mdi:alarm-light
+    dps:
+      - id: 123
+        type: boolean
+
+  - entity: sensor
+    name: Battery Level
+    device_class: battery
+    unit: "%"
+    icon: mdi:battery
+    dps:
+      - id: 125
+        type: integer
+
+  - entity: select
+    name: High Flow Linkage
+    icon: mdi:alert-circle
+    dps:
+      - id: 126
+        type: string
+        mapping:
+          "on": enabled
+          "off": disabled
+
+  - entity: select
+    name: Low Flow Linkage
+    icon: mdi:alert-circle-outline
+    dps:
+      - id: 127
+        type: string
+        mapping:
+          "on": enabled
+          "off": disabled
